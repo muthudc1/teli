@@ -1,4 +1,5 @@
-package com.example.teli
+package com.example.teli.Api
+import com.example.teli.Api.LoginResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST

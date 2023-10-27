@@ -1,4 +1,4 @@
-package com.example.teli
+package com.example.teli.Api
 
 import com.google.gson.annotations.SerializedName
 

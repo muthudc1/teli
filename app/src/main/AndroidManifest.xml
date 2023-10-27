@@ -17,16 +17,16 @@
 
 
         <activity
-            android:name=".first"
+            android:name=".Activity.first"
             android:exported="false" />
         <activity
             android:name=".register"
             android:exported="false" />
         <activity
-            android:name=".login"
+            android:name=".Activity.login"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

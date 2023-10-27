@@ -1,11 +1,16 @@
-package com.example.teli
+package com.example.teli.Activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.teli.Api.AuthService
+import com.example.teli.Api.LoginRequest
+import com.example.teli.Api.LoginResponse
+import com.example.teli.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,6 +23,7 @@ class login : AppCompatActivity() {
     lateinit var passwordEditText: EditText
     lateinit var loginButton: Button
     lateinit var authService: AuthService
+    lateinit var signupText : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +39,12 @@ class login : AppCompatActivity() {
         phoneNumberEditText = findViewById(R.id.phoneno)
         passwordEditText = findViewById(R.id.password)
         loginButton = findViewById(R.id.loginButton)
+        signupText = findViewById(R.id.signupText)
+
+        signupText.setOnClickListener {
+            val intent = Intent(this, register::class.java)
+            startActivity(intent)
+        }
 
         loginButton.setOnClickListener {
             val phoneNumber = phoneNumberEditText.text.toString()
