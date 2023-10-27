@@ -20,7 +20,7 @@
             android:name=".Activity.first"
             android:exported="false" />
         <activity
-            android:name=".register"
+            android:name=".Activity.register"
             android:exported="false" />
         <activity
             android:name=".Activity.login"
