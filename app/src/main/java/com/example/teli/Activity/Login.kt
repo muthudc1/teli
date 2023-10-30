@@ -11,6 +11,7 @@ import com.example.teli.Api.AuthService
 import com.example.teli.Api.LoginRequest
 import com.example.teli.Api.LoginResponse
 import com.example.teli.R
+import com.example.teli.Storage.SharedPreferencesManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,6 +25,7 @@ class login : AppCompatActivity() {
     lateinit var loginButton: Button
     lateinit var authService: AuthService
     lateinit var signupText : TextView
+    lateinit var sharedPrefsManager : SharedPreferencesManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,9 @@ class login : AppCompatActivity() {
         passwordEditText = findViewById(R.id.password)
         loginButton = findViewById(R.id.loginButton)
         signupText = findViewById(R.id.signupText)
+
+         sharedPrefsManager = SharedPreferencesManager(this)
+
 
         signupText.setOnClickListener {
             val intent = Intent(this, register::class.java)
@@ -60,8 +65,17 @@ class login : AppCompatActivity() {
             authService.login(logReq).enqueue(object : Callback<LoginResponse> {
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                     if (response.isSuccessful) {
+
+                        // Replace these lines with your actual login logic
+
+
                         val token = response.body()?.data!!.token
-                        Toast.makeText(this@login, "api success", Toast.LENGTH_SHORT).show()
+                        val name = response.body()?.data!!.name.toString()
+                        val userId = response.body()?.data!!.userId.toString() // The user ID obtained after a successful login
+                        sharedPrefsManager.saveUserId(userId)
+
+
+                        Toast.makeText(this@login, "Login success ", Toast.LENGTH_SHORT).show()
                         // Handle a successful login, save the token, and navigate to the next screen
                       val  intent = Intent (this@login, first::class.java )
                         startActivity(intent)
